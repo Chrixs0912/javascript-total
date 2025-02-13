@@ -3,7 +3,7 @@
 ## Curso de HTML, CSS y Javascrpt
 
 ## Nombre del estudiante: 
-	Christopher Abel Sequeira
+Christopher Abel Sequeira
 
 ### Seccion 10-2
 ### Descripcion del repositorio:
