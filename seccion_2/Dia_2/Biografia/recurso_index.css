@@ -1,0 +1,15 @@
+.titulos{
+text-align: center;
+background-color: rgb(38, 38, 149);
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+color: white;
+}
+
+.color{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+body{
+    background-color: black;
+}

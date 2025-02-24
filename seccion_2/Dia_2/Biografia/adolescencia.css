@@ -1,0 +1,12 @@
+.texto{
+    color: navy;
+    text-align: center;
+    font-weight: 100;
+    font-style: oblique;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    backface-visibility: hidden;
+    background-color: khaki;
+}
