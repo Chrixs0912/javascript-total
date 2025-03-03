@@ -6,11 +6,16 @@
 <body>
     <button onclick="test()">Click aquí</button>
     <script>
-        const frutas = ["manzanas ", " bananas", " naranjas"];
-        const dato2 = frutas;
+        var miarray;
 
-        function test() {
-            alert(dato2);
+        miarray = ['Manzanas', 'Bananas', 'Naranjas']
+
+        var dato2;
+
+        dato2 = miarray[1]
+
+        function test () {
+            alert ("El valor del array en la posicion 1 es: " + dato2 )
         }
     </script>
 </body>

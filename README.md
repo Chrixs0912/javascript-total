@@ -1,6 +1,6 @@
 # javascript-total
 
-## Curso de HTML, CSS y Javascrpt
+## Curso de HTML, CSS y Javascript
 
 ## Nombre del estudiante: 
 Christopher Abel Sequeira
