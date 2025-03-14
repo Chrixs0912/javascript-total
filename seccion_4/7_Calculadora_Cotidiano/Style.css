@@ -1,0 +1,23 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.Titulos{
+    text-align: center;
+}
+
+.Containers{
+    border-color: black;
+    border-style: solid;
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+    display: inline-block
+}
+
+.Botones{
+    width: 7%;
+    padding: 7px;
+    
+}
