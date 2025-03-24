@@ -1,16 +1,23 @@
-function enviar() {
-    let ElementoNumerodeFruta = document.getElementById("numeroFruta");
-    let Fruta = ElementoNumerodeFruta.value;
-
-    switch (Fruta) {
-        case "1":
-            alert ("La fruta es Naranja y su precio es de: $20" )
+function mostrarPrecio(fruta) {
+    let precio;
+    switch (fruta) {
+        case "Manzana":
+            precio = 15;
             break;
-        case "2":
-            alert ("La fruta es Manzana y su precio es de: $15")
+        case 'Naranja':
+            precio = 20;
             break;
-        case "3":
-            alert ("La fruta es Banana y su precio es de: $25")
+        case 'Banana':
+            precio = 25;
             break;
+        default:
+            alert('Fruta no disponible');
+            return;
     }
+    alert("El precio de " + fruta + " es: " + precio);
+}
+
+function enviar() {
+    let fruta = document.getElementById('numeroFruta').value;
+    mostrarPrecio(fruta);
 }

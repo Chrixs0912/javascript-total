@@ -9,6 +9,6 @@ function Calcular() {
     let Calcular1 = Numero1 >= Numero2
     elementoRespuesta.textContent = Calcular1
 
-    let Calcular2 = Numero2 = Numero1
+    let Calcular2 = Numero2 <= Numero1
     elementoRespuesta.textContent = Calcular2
 }
