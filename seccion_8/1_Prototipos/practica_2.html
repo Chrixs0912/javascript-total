@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let estudiante = {
+            nombre: "Juan",
+            apellido: "Pérez",
+            legajo: 12345
+        };
+
+        function prototipos() {
+            let estudiante1 = Object.create(estudiante);
+            console.log(estudiante1.__proto__);
+        }
+
+        prototipos();
+
+    </script>
+</body>
+
+</html>
