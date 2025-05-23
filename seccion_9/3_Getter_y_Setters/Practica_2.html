@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class colegio{
+            constructor(nombre, ubicacion, ID){
+                this.nombre = nombre;
+                this.ubicacion = ubicacion;
+                this._ID = ID;
+            }
+
+            set ID(NuevoID){
+                this._ID = NuevoID;
+            }
+
+            get ID(){
+                return this._ID;
+            }
+        }
+
+        let Colegio1 = new colegio ('Castro Madriz', 'Alajuela, Centro', 28319823)
+        console.log(Colegio1)
+    </script>
+</body>
+</html>
