@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let nombre;
+        let calle;
+        let ciudad;
+        let cantEstudiantes;
+        let estudiantes;
+
+        function ejecutar() {
+            fetch('Practica_2.json')
+                .then(respuesta => respuesta.json())
+                .then(function (salida) {
+                    nombre = salida.nombre;
+                    calle = salida.calle;
+                    ciudad = salida.ciudad;
+                    cantEstudiantes = salida.cantEstudiantes;
+                    estudiantes = salida.Estudiantes;
+                    console.log({ nombre, calle, ciudad, cantEstudiantes, estudiantes });
+                })
+                .catch(function (error) {
+                    alert('Ocurrió un error al cargar los datos.');
+                    console.error(error);
+                });
+        }
+
+        ejecutar();
+    </script>
+</body>
+
+</html>
