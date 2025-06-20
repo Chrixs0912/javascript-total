@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test(callback) {
+            setTimeout(function () {
+                callback("Hola mundo");
+            }, 2000);
+        }
+
+        function imprimir(mensaje) {
+            console.log(mensaje);
+        }
+
+        test(imprimir);
+    </script>
+</body>
+
+</html>
