@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function request(url) {
+            return fetch(url).then(function (respuesta) {
+                return respuesta.json();
+            });
+        }
+
+        request('mensaje.json').then(function (datos) {
+            console.log(datos.message);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    </script>
+</body>
+
+</html>
