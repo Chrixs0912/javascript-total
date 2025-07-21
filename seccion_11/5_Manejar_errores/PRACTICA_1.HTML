@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function tablaDelCinco(numero) {
+            if (numero === 0) {
+                throw new Error("El número no puede ser 0");
+            }
+            else {
+                return 5 * numero;
+            }
+        }
+
+        async function manejarErrores() {
+            try {
+                const resultado = await tablaDelCinco(0);
+                console.log(resultado);
+            } catch (error) {
+                console.error(error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>
