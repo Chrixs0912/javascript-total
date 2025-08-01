@@ -1,0 +1,11 @@
+body {
+    background-color: khaki;
+}
+
+#titulo {
+    text-align: center;
+}
+
+#tabla {
+    justify-content: space-between;
+}

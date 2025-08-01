@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotidiano CRUD-Replit</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 id="titulo">Administracion de productos</h1>
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Modelo</th>
+                <th>Color</th>
+                <th>Almacenamiento</th>
+                <th>Procesador</th>
+            </tr>
+        </thead>
+        <tbody id="oroductos"></tbody>
+    </table>
+
+    <br>
+
+    <b>Consultar articulo</b>
+
+    <input type="number" placeholder="Ingrese su ID" id="CampoBuscar">
+    <button onclick="ConsultarCampoBuscar"">Consultar</button>
+
+    <p>Nombre:</p>
+    <p>Modelo:</p>
+    <p>Color:</p>
+    <p>Almacenamiento:</p>
+    <p>Procesador:</p>
+
+    <button onclick="modificar()">Modifica</button>
+    <button onclick="eliminar()">Eliminar</button>
+
+    <b>Agregar articulo</b>
+
+    <input type="text" placeholder="Marca">
+    <input type="text" placeholder="Modelo">
+    <input type="text" placeholder="Color">
+    <input type="text" placeholder="Almacenamiento (GB)">
+    <input type="text" placeholder="Procesador">
+
+    <button onclick="agregarProducto()">Agregar</button>
+</body>
+
+</html>
