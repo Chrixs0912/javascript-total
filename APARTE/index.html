@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body onload="obtenerTodos()">
     <h1 id="titulo">Administracion de productos</h1>
     <table id="tabla">
         <thead>
@@ -22,7 +22,7 @@
                 <th>Procesador</th>
             </tr>
         </thead>
-        <tbody id="oroductos"></tbody>
+        <tbody id="productos"></tbody>
     </table>
 
     <br>
@@ -30,26 +30,181 @@
     <b>Consultar articulo</b>
 
     <input type="number" placeholder="Ingrese su ID" id="CampoBuscar">
-    <button onclick="ConsultarCampoBuscar"">Consultar</button>
+    <button onclick="consultarUno()">Consultar</button>
 
-    <p>Nombre:</p>
-    <p>Modelo:</p>
-    <p>Color:</p>
-    <p>Almacenamiento:</p>
-    <p>Procesador:</p>
+    <br>
+    <br>
 
-    <button onclick="modificar()">Modifica</button>
-    <button onclick="eliminar()">Eliminar</button>
+    <p>Nombre:</p> <input type="text" id="txtNombre">
+    <br>
+    <p>Modelo:</p> <input type="text" id="txtModelo">
+    <br>
+    <p>Color:</p> <input type="text" id="txtColor">
+    <br>
+    <p>Almacenamiento:</p> <input type="text" id="txtAlmacenamiento">
+    <br>
+    <p>Procesador:</p> <input type="text" id="txtProcesador">
+
+    <br>
+    <br>
+
+    <button onclick="modificarUno()">Modifica</button>
+    <button onclick="eliminarUno()">Eliminar</button>
+
+    <br>
+    <br>
 
     <b>Agregar articulo</b>
 
-    <input type="text" placeholder="Marca">
-    <input type="text" placeholder="Modelo">
-    <input type="text" placeholder="Color">
-    <input type="text" placeholder="Almacenamiento (GB)">
-    <input type="text" placeholder="Procesador">
+    <br>
+    <br>
 
-    <button onclick="agregarProducto()">Agregar</button>
+    <input type="text" placeholder="Nombre" id="nuevoNombre">
+    <br>
+    <input type="text" placeholder="Modelo" id="nuevoModelo">
+    <br>
+    <input type="text" placeholder="Color" id="nuevoColor">
+    <br>
+    <input type="text" placeholder="Almacenamiento (GB)" id="nuevoAlmacenamiento">
+    <br>
+    <input type="text" placeholder="Procesador" id="nuevoProcesador">
+
+    <br>
+    <br>
+
+    <button onclick="agregarUno()">Agregar</button>
+
+    <script src="script.js"></script>
+
 </body>
+
+<script>
+    const API_URL = "http://localhost:3000/productos";
+    let idActual = 0;
+
+    function obtenerTodos() {
+        fetch(API_URL)
+            .then((response) => response.json())
+            .then((data) => {
+                const tbody = document.getElementById("productos");
+                tbody.innerHTML = "";
+                data.forEach((p) => {
+                    tbody.innerHTML += `
+          <tr>
+          <td>${p.id}</td>
+          <td>${p.nombre}</td>
+          <td>${p.modelo}</td>
+          <td>${p.color}</td>
+          <td>${p.almacenamiento}</td>
+          <td>${p.procesador}</td>
+          </tr>`;
+                });
+            });
+    }
+
+    function consultarUno() {
+        let id = document.getElementById("CampoBuscar").value;
+        if (id == "") {
+            alert("Debe ingresar un ID");
+            return;
+        }
+
+        fetch(API_URL + "/" + id)
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("txtNombre").value = data.nombre;
+                document.getElementById("txtModelo").value = data.modelo;
+                document.getElementById("txtColor").value = data.color;
+                document.getElementById("txtAlmacenamiento").value = data.almacenamiento;
+                document.getElementById("txtProcesador").value = data.procesador;
+                idActual = data.id;
+            });
+    }
+
+    function agregarUno() {
+        let nombre = document.getElementById("nuevoNombre").value;
+        let modelo = document.getElementById("nuevoModelo").value;
+        let color = document.getElementById("nuevoColor").value;
+        let almacenamiento = document.getElementById("nuevoAlmacenamiento").value;
+        let procesador = document.getElementById("nuevoProcesador").value;
+
+        if (nombre == "" || modelo == "") {
+            alert("Debe llenar los campos obligatorios");
+            return;
+        }
+
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nombre: nombre,
+                modelo: modelo,
+                color: color,
+                almacenamiento: almacenamiento,
+                procesador: procesador
+            }),
+        }).then(() => {
+            document.getElementById("nuevoNombre").value = "";
+            document.getElementById("nuevoModelo").value = "";
+            document.getElementById("nuevoColor").value = "";
+            document.getElementById("nuevoAlmacenamiento").value = "";
+            document.getElementById("nuevoProcesador").value = "";
+            alert("Producto agregado");
+            obtenerTodos();
+        });
+    }
+
+    function modificarUno() {
+        let nombre = document.getElementById("txtNombre").value;
+        let modelo = document.getElementById("txtModelo").value;
+        let color = document.getElementById("txtColor").value;
+        let almacenamiento = document.getElementById("txtAlmacenamiento").value;
+        let procesador = document.getElementById("txtProcesador").value;
+
+        if (idActual == 0) {
+            alert("Debe consultar un producto primero");
+            return;
+        }
+
+        fetch(API_URL + "/" + idActual, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nombre: nombre,
+                modelo: modelo,
+                color: color,
+                almacenamiento: almacenamiento,
+                procesador: procesador
+            }),
+        }).then(() => {
+            alert("Producto modificado");
+            obtenerTodos();
+        });
+    }
+
+    function eliminarUno() {
+        if (idActual == 0) {
+            alert("Debe consultar un producto primero");
+            return;
+        }
+
+        fetch(API_URL + "/" + idActual, {
+            method: "DELETE"
+        }).then(() => {
+            document.getElementById("txtNombre").value = "";
+            document.getElementById("txtModelo").value = "";
+            document.getElementById("txtColor").value = "";
+            document.getElementById("txtAlmacenamiento").value = "";
+            document.getElementById("txtProcesador").value = "";
+            idActual = 0;
+            alert("Producto eliminado");
+            obtenerTodos();
+        });
+    }
+</script>
 
 </html>

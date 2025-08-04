@@ -9,3 +9,45 @@ body {
 #tabla {
     justify-content: space-between;
 }
+
+p {
+    display: inline-block;
+    width: 150px;
+    margin: 5px 0;
+}
+
+input[type="text"] {
+    width: 200px;
+    margin: 5px 0;
+}
+
+#tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+#tabla th, #tabla td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+#tabla th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Alineación de los inputs del formulario de consulta */
+p {
+    display: inline-block;
+    width: 150px;
+    margin: 5px 0;
+    vertical-align: top;
+}
+
+input[type="text"], input[type="number"] {
+    width: 200px;
+    margin: 5px 0;
+}
